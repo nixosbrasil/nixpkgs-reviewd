@@ -1,6 +1,6 @@
-import { users, repo } from '#/settings.json'
+import { users, repo } from '../../../../settings.json'
 import { handleError, parseBuildArgs, workflowEmoji, sleep, ourFetch, EventMethods } from '$lib'
-import botHelp from '#/bot_help.txt?raw'
+import botHelp from '../../../../bot_help.txt?raw'
 
 import { json } from '@sveltejs/kit'
 
