@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { repo } from "#/settings.json"
+  import { repo } from "../../settings.json"
   import { workflowEmoji } from "$lib";
 
   async function updateActions() {
@@ -15,31 +15,29 @@
   let actions = updateActions()
 </script>
 
-<svelte:head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">
-</svelte:head>
+<article class="prose p-4">
+  <h1>nixpkgs-reviewd</h1>
 
-<h1>nixpkgs-reviewd</h1>
+  <p>Solução para disparar instâncias do nixpkgs-review através do Telegram</p>
 
-<p>Solução para disparar instâncias do nixpkgs-review através do Telegram</p>
+  <h2>Ongoing tasks <button class="btn btn-sm" onclick="{() => actions = updateActions()}">Refresh</button></h2>
 
-<h2>Ongoing tasks <button onclick="{() => actions = updateActions()}">Refresh</button></h2>
-
-{#await actions}
-  <p>Loading...</p>
-{:then actionsData}
-<ul>
-{#each actionsData.workflow_runs as action}
-  {#if action.path == '.github/workflows/nixpkgs-review.yml'}
-    <li>
-      {workflowEmoji(action)}
-      <a target="_blank" href="{action.html_url}">
-        { action.name }
-      </a>
-    </li>
-  {/if}
-{/each}
-</ul>
-{:catch error}
-  <p color="red">Error { error }</p>
-{/await}
+  {#await actions}
+    <p>Loading...</p>
+  {:then actionsData}
+  <ul>
+  {#each actionsData.workflow_runs as action}
+    {#if action.path == '.github/workflows/nixpkgs-review.yml'}
+      <li>
+        {workflowEmoji(action)}
+        <a target="_blank" href="{action.html_url}">
+          { action.name }
+        </a>
+      </li>
+    {/if}
+  {/each}
+  </ul>
+  {:catch error}
+    <p color="red">Error { error }</p>
+  {/await}
+</article>

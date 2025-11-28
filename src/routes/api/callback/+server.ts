@@ -1,4 +1,4 @@
-import { users, repo } from '#/settings.json'
+import { users, repo } from '../../../../settings.json'
 import { EventMethods, workflowEmoji } from '$lib'
 
 import { json } from '@sveltejs/kit'

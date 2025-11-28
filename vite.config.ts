@@ -1,14 +1,9 @@
+import adapter from '@sveltejs/adapter-cloudflare-workers';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
-import path from 'path';
-
 export default defineConfig({
-	plugins: [sveltekit()],
-	resolve: {
-		alias: {
-			'@': path.resolve(__dirname, "./src"),
-			'#': path.resolve(__dirname),
-		}
-	}
+	plugins: [tailwindcss(), sveltekit()]
 });

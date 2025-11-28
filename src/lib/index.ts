@@ -1,5 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-import { users, repo } from '#/settings.json'
+import { users, repo } from '../../settings.json'
 
 export function handleError(e) {
   const {message, stack} = e
